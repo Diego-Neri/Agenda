@@ -24,12 +24,18 @@ Este projeto é uma aplicação de **Agenda** desenvolvida em C# utilizando Wind
 .........
 
 🔗 Links
+
 Visual Studio: https://visualstudio.microsoft.com/pt-br/
+
 Documentação C#: https://learn.microsoft.com/pt-br/dotnet/csharp/ 
+
 Documentação Windows Forms: https://learn.microsoft.com/pt-br/dotnet/desktop/winforms/overview/?view=netdesktop-8.0
 
 
-📬 Contato
+
+
+## 📬 Contato
+
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato:
 
 Email: diegoneri500@gmail.com
