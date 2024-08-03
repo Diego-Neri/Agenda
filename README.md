@@ -21,7 +21,9 @@ Este projeto é uma aplicação de **Agenda** desenvolvida em C# utilizando Wind
 - **Deletar**: Remova contatos da agenda.
 
 ## 🎨 Interface
-.........
+
+![AgendaGit](https://github.com/user-attachments/assets/7072cfc0-d901-4024-a4d0-46f02ff818bc)
+
 
 🔗 Links
 
