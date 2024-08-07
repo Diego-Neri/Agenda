@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace addressbook
 {
     public partial class Form1 : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=Cadastro;Integrated Security=True");
-        SqlCommand cmd;
-        SqlDataAdapter adapt;
+        MySqlConnection con = new MySqlConnection("Server=127.0.0.1;Database=Cadastro;Uid=root;Pwd=Stock@@003;");
+        MySqlCommand cmd;
+        MySqlDataAdapter adapt;
         int ID = 0;
 
         public Form1()
@@ -24,7 +24,7 @@ namespace addressbook
             {
                 con.Open();
                 DataTable dt = new DataTable();
-                adapt = new SqlDataAdapter("SELECT * FROM Contatos", con);
+                adapt = new MySqlDataAdapter("SELECT * FROM Contatos", con);
                 adapt.Fill(dt);
                 dgvAgenda.DataSource = dt;
             }
@@ -60,12 +60,7 @@ namespace addressbook
             }
         }
 
-        private void btn_about_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Adaptado por Macoratti .net","Agenda", MessageBoxButtons.OK,
-          MessageBoxIcon.Information);
-            txtNome.Focus();
-        }
+   
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
@@ -73,7 +68,7 @@ namespace addressbook
             {
                 try
                 {
-                    cmd = new SqlCommand("INSERT INTO Contatos(nome,endereco,celular,telefone,email) VALUES(@nome,@endereco,@celular,@telefone,@email)", con);
+                    cmd = new MySqlCommand("INSERT INTO Contatos(nome,endereco,celular,telefone,email) VALUES(@nome,@endereco,@celular,@telefone,@email)", con);
                     con.Open();
                     cmd.Parameters.AddWithValue("@nome", txtNome.Text.ToUpper());
                     cmd.Parameters.AddWithValue("@endereco", txtEndereco.Text.ToUpper());
@@ -106,7 +101,7 @@ namespace addressbook
             {
                 try
                 { 
-                cmd = new SqlCommand("UPDATE Contatos SET nome=@nome, endereco=@endereco, celular=@celular,telefone=@telefone,email=@email WHERE id=@id", con);
+                cmd = new MySqlCommand("UPDATE Contatos SET nome=@nome, endereco=@endereco, celular=@celular,telefone=@telefone,email=@email WHERE id=@id", con);
                 con.Open();
                 cmd.Parameters.AddWithValue("@id", ID);
                 cmd.Parameters.AddWithValue("@nome", txtNome.Text.ToUpper());
@@ -166,7 +161,7 @@ namespace addressbook
                 {
                     try
                     {
-                        cmd = new SqlCommand("DELETE Contatos WHERE id=@id", con);
+                        cmd = new MySqlCommand("DELETE FROM Contatos WHERE id = @id", con);
                         con.Open();
                         cmd.Parameters.AddWithValue("@id", ID);
                         cmd.ExecuteNonQuery();
@@ -188,6 +183,10 @@ namespace addressbook
             {
                 MessageBox.Show("Selecione um registro para deletar");
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+
         }
     }
 }
